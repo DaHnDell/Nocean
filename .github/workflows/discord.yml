@@ -9,14 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send push info to Discord
+      - name: 🔔 Send push info to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
         run: |
+          echo "{
+            \"username\": \"GitHub Bot\",
+            \"content\": \"master 브랜치에 push 발생!\n 커밋: ${COMMIT_MSG}\n ${COMMIT_URL}\"
+          }" > payload.json
+          
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d '{
-                 "username": "GitHub Bot",
-                 "content": "`master` 브랜치에 코드가 push되었습니다.\n🔧 커밋 메시지: '${{ github.event.head_commit.message }}'\n🔗 <${{ github.event.head_commit.url }}>"
-               }' \
-               $DISCORD_WEBHOOK
+               -d @payload.json \
+               "$DISCORD_WEBHOOK"
