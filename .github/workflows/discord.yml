@@ -1,0 +1,22 @@
+name: Notify Discord on Master Push
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send push info to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{
+                 "username": "GitHub Bot",
+                 "content": "`master` 브랜치에 코드가 push되었습니다.\n🔧 커밋 메시지: '${{ github.event.head_commit.message }}'\n🔗 <${{ github.event.head_commit.url }}>"
+               }' \
+               $DISCORD_WEBHOOK
