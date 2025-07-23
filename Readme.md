@@ -56,6 +56,8 @@ docker run -d -p 8080:8080 \
 
 ### 예시 결과 (Notion에 기록되는 내용)
 
+<img src=https://kcanmin-bucket.s3.ap-northeast-2.amazonaws.com/nocean/example.png>
+
 ```
 Commit Message: "Refactor user login logic and add error handling"
 Summary: 사용자 로그인 로직 리팩토링 및 예외처리 추가에 대한 커밋입니다.
