@@ -3,3 +3,18 @@ spring:
         include:
             - openai
             - notion
+            - webhook
+
+openai:
+    api-key: ${OPENAI_API_KEY}
+    prompt-template: |
+        메시지: {{message}}
+        변경: {{diff}}
+        → 한 줄로 요약해줘.
+
+notion:
+    token: ${NOTION_TOKEN}
+    database-id: ${NOTION_DATABASE_ID}
+
+webhook:
+    secret: ${WEBHOOK_SECRET}
