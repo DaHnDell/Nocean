@@ -2,14 +2,14 @@ name: Notify Discord on Master Push
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
   notify-discord:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔔 Send push info to Discord
+      - name: Send push info to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
