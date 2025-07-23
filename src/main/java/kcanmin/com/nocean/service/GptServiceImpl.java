@@ -32,8 +32,8 @@ public class GptServiceImpl implements GptService {
 
     JSONObject bodyObj = new JSONObject();
     bodyObj.put("model", "gpt-3.5-turbo");
-    bodyObj.put("max_tokens", 200);
-    bodyObj.put("temperature", 0.6);
+    bodyObj.put("max_tokens", 300);
+    bodyObj.put("temperature", 1.0);
     bodyObj.put("messages", new JSONArray().put(messageObj));
 
     Request request = new Request.Builder()
@@ -54,7 +54,6 @@ public class GptServiceImpl implements GptService {
         return "OpenAI 오류: " + obj.getJSONObject("error").getString("message");
       }
 
-      // 정상 응답 파싱
       String content = obj
               .getJSONArray("choices")
               .getJSONObject(0)
