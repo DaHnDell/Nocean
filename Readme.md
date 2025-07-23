@@ -1,11 +1,16 @@
 
 <img src=https://kcanmin-bucket.s3.ap-northeast-2.amazonaws.com/nocean/Nocean.png>
 
+
 ---
 
 ## 🧠 Notion Logger
 
 GitHub 커밋 메시지를 GPT로 요약하여 Notion에 자동 기록하는 Webhook 서비스입니다.
+
+아키텍쳐 이미지
+
+<img src=https://kcanmin-bucket.s3.ap-northeast-2.amazonaws.com/nocean/noceanarch.png>
 
 ---
 
