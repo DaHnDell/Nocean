@@ -29,14 +29,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/notion-logger \
             --build-arg OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
             --build-arg NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} \
             --build-arg NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }} \
-            --build-arg WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }} \
-            -t ${{ secrets.DOCKER_USERNAME }}/notion-logger \
-            .
-
+            --build-arg WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }} .
 
       - name: Push to DockerHub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/notion-logger
