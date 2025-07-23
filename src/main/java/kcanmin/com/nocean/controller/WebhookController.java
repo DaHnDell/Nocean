@@ -4,6 +4,8 @@ import kcanmin.com.nocean.entity.dto.GithubPayloadDto;
 import kcanmin.com.nocean.service.GptService;
 import kcanmin.com.nocean.service.NotionService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/github")
 @RequiredArgsConstructor
+@Log4j2
 public class WebhookController {
 
   private final GptService gptService;
@@ -22,6 +25,7 @@ public class WebhookController {
 
   @PostMapping("/webhook")
   public String handlePushEvent(@RequestBody GithubPayloadDto githubPayloadDto) {
+    log.info("::: REQ has been signed in :::");
     try {
       Map<String, Object> headCommit = githubPayloadDto.getHead_commit();
       if (headCommit == null) return "head_commit 없음";
