@@ -10,7 +10,7 @@ openai:
     prompt-template: |
         메시지: {{message}}
         변경: {{diff}}
-        → 한 줄로 요약해줘.
+        → 한글 한 줄로 요약해줘.
 
 notion:
     token: ${NOTION_TOKEN}
