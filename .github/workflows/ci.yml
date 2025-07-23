@@ -36,5 +36,6 @@ jobs:
             --build-arg WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }} \
             -t ${{ secrets.DOCKER_USERNAME }}/notion-logger .
 
+
       - name: Push to DockerHub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/notion-logger
