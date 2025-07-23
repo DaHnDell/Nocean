@@ -38,4 +38,5 @@ out/
 
 ### yml ###
 application-openai.yml
+application-notion.yml
 .env
